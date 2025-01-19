@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Registration</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 50px;
+            background-color: burlywood;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            gap: 20px;
+        }
+        h1{
+            color: #0056b3;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        // Simulated registered users
+        const registeredUsers = ["user1", "user2", "user3"];
+
+        function validateLogin(event) {
+            event.preventDefault(); // Prevent form submission
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (registeredUsers.includes(username)) {
+                alert("Login successful! Redirecting to voting page...");
+                window.location.href = "voting.html";
+            } else {
+                alert("You are not registered. Please register first.");
+            }
+        }
+
+        function registerUser(event) {
+            event.preventDefault();
+            const newUsername = document.getElementById("newUsername").value;
+            const newPassword = document.getElementById("newPassword").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (newPassword !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                return;
+            }
+
+            if (registeredUsers.includes(newUsername)) {
+                alert("This username is already registered.");
+            } else {
+                registeredUsers.push(newUsername);
+                alert("Registration successful! You can now log in.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>WELCOME TO LOGIN ON ONLINE VOTING SYSTEM</h1>
+    <form onsubmit="validateLogin(event)">
+        <h2>Login Page</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <form onsubmit="registerUser(event)">
+        <h2>Registration Page</h2>
+        <label for="newUsername">New Username:</label>
+        <input type="text" id="newUsername" required>
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" required>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" required>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
