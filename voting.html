@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Page</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 50px;
+            background-color: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h1 {
+            color: blue;
+        }
+        .candidate {
+            background: blanchedalmond;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            margin: 10px 0;
+            width: 300px;
+            text-align: center;
+        }
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        p{
+            color: black;
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        let hasVoted = false;
+
+        function vote(candidate) {
+            if (!hasVoted) {
+                alert(`You voted for ${candidate}! Thank you for your vote.`);
+                hasVoted = true;
+                disableVoteButtons();
+            } else {
+                alert("You have already voted! Voting more than once is not allowed.");
+            }
+        }
+
+        function disableVoteButtons() {
+            const buttons = document.querySelectorAll("button");
+            buttons.forEach(button => button.disabled = true);
+        }
+    </script>
+</head>
+<body>
+    <h1>Choose Your Class Representative</h1>
+    <div class="candidate">
+        <p>RAJA TAYAGI</p>
+        <button onclick="vote('RAJA TAYAGI')">Vote</button>
+    </div>
+    <div class="candidate">
+        <p>DIPTI JHA</p>
+        <button onclick="vote('DIPTI JHA')">Vote</button>
+    </div>
+    <div class="candidate">
+        <p>KARAN DUBE</p>
+        <button onclick="vote('KARAN DUBE')">Vote</button>
+    </div>
+    <div class="candidate">
+        <p>KUNDAN KRISHNAN </p>
+        <button onclick="vote('KUNDAN ')">Vote</button>
+    </div>
+    <div class="candidate">
+        <p>SHREYASH SINGH</p>
+        <button onclick="vote('SHREYASH SINGH')">Vote</button>
+    </div>
+</body>
+</html>
